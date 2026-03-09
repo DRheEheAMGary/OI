@@ -7,17 +7,17 @@ using namespace std;
 #define intc constexpr int
 #define intl long long
 #define Cios ios::sync_with_stdio(0);cin.tie(0);cout.tie(0)
-intc N=2e5+10,B=550;
+intc N=2e5+10,R=2.5e4+10,B=550;
 class Sqrt {
     typedef pair<int,int> pii;
     int n,r,lim=500;
     vector <int> g[N];
-    vector <int> cl[N];
+    vector <int> cl[R];
     int fa[N],col[N],dfn[N],pos[N],sz[N];
     int dfncnt=0,clcnt=0;
     int tmp[N];
-    int up[N/B+5][N],down[N/B+5][N];
-    vector <pii> res[N];
+    int up[B][R],down[B][R];
+    vector <pii> res[R];
     void dfs (int u) {
         dfn[u]=++dfncnt;
         sz[u]=1;
@@ -93,12 +93,14 @@ class Sqrt {
         }
         else {
             int pr1=0,pr2=0;
+            int cnt=0;
             while (pr2<cl[r2].size()) {
                 int _nw=cl[r2][pr2];
                 while (pr1<res[r1].size()&&res[r1][pr1].first<=dfn[_nw]) {
-                    ans+=res[r1][pr1].second;
+                    cnt+=res[r1][pr1].second;
                     pr1++;
                 }
+                ans+=cnt;
                 pr2++;
             }
         }
