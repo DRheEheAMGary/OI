@@ -8,5 +8,6 @@ using namespace std;
 #define intl long long
 #define Cios ios::sync_with_stdio(0);cin.tie(0);cout.tie(0)
 signed main(){
+    Cios;
     return 0;
 }
