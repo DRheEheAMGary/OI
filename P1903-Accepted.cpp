@@ -8,7 +8,7 @@ using namespace std;
 #define int long long
 #define Cios ios::sync_with_stdio(0);cin.tie(0);cout.tie(0)
 intc N=1e6+10;
-int n,m,k,size;
+int n,m,k,sz;
 struct ques {
     int idx,l,r,t,ans;
 }q[N];
@@ -28,11 +28,11 @@ struct answ {
         cnt[p]--;
     }
 }res;
-int pos (int p) {return (p-1)/size+1;}
+int pos (int p) {return (p-1)/sz+1;}
 signed main(){
     Cios;
     cin>>n>>m;
-    size=pow(n,2.0/3);
+    sz=pow(n,2.0/3);
     for (int i=1;i<=n;i++) cin>>a[i];
     for (int i=1;i<=m;i++) {
         char op;
