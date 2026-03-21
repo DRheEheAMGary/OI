@@ -6,9 +6,9 @@
 - 题号：洛谷题号
 - 状态： 
     - Uncompleted 未完成
-    - Unaccepted  未通过
-    - Accepted    已通过
-    
+    - Unaccepted 未通过
+    - Accepted 已通过
+    - _Example_ 示例代码，可能来自题解/同学
     
 文件夹说明：
 - 2026 WeekCompetition :  
