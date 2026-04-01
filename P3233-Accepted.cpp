@@ -60,13 +60,22 @@ void build () {
     st.clear();
     st.push(1);
     ng[1].clear();
-    for (int u:si) {
-        if (u==1) continue;
+    if (si[0]!=1) {
+        st.push(si[0]);
+        mind[si[0]]=0;
+        bel[si[0]]=si[0];
+        mind[1]=inf;
+        bel[1]=0;
+    }
+    else {
+        mind[1]=0;
+        bel[1]=1;
+    }
+    for (int i=1;i<k;i++) {
+        int u=si[i];
         int lc=lca(st.top(),u);
-        if (lc!=st.top()) {
-            while (st.size()>1&&dep[st.ptop()]>=dep[lc]) ng[st.ptop()].push_back(st.top()),st.pop();
-            if (st.ptop()!=lc) ng[lc].push_back(st.top()),st.pop(),st.push(lc),mind[lc]=inf,bel[lc]=0;
-        }
+        while (st.size()>1&&dfn[st.ptop()]>=dfn[lc]) ng[st.ptop()].push_back(st.top()),st.pop();
+        if (st.top()!=lc) ng[lc].push_back(st.top()),st.pop(),st.push(lc),mind[lc]=inf,bel[lc]=0;
         st.push(u);
     }
     while (st.size()>1) ng[st.ptop()].push_back(st.top()),st.pop();
@@ -107,6 +116,14 @@ int getmid (int u,int v) {
     }
     return mid;
 }
+#ifdef DEBUG
+void print (int u) {
+    cout<<"debug: "<<u<<": "<<bel[u]<<" "<<mind[u]<<endl;
+    for (int v:ng[u]) print(v);
+}
+#else
+string print (int u) {return "Love hanser forever!";}
+#endif
 void dfsdp (int u) {
     rmsiz[u]=siz[u];
     for (int v:ng[u]) {
@@ -146,6 +163,7 @@ signed main() {
         build();
         dfs1 (1);
         dfs2 (1);
+        print(1);
         dfsdp(1);
         for (int i=1;i<=k;i++) cout<<res[imp[i]]<<" \n"[i==k];
         for (int i=1;i<=k;i++) res[imp[i]]=0,mind[imp[i]]=inf;
