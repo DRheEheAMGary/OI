@@ -4,4 +4,8 @@
     "editor.guides.bracketPairs": "active",
     "editor.guides.bracketPairsHorizontal": "active",
     "editor.trimAutoWhitespace": false,
+    "clangd.fallbackFlags": [
+        "-xc++",
+        "-std=c++20",
+    ] 
 }
