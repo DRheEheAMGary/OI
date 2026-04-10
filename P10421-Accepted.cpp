@@ -34,7 +34,7 @@ class Fenwick {
         return query(r)-query(l-1);
     }
 }bit,bbit;
-int n,k,r;
+int n,l,r;
 vector <int> g[N];
 int res,rt,tsiz;
 bool vis[N];
@@ -75,7 +75,7 @@ inline void solve (int u) {
         if (vis[v]) continue;
         dis.clear();
         getdist (v,u,1);
-        for (int d:dis) res+=bit.queryInterval(k-d,r-d)+d*bbit.queryInterval(k-d,r-d);
+        for (int d:dis) res+=bit.queryInterval(l-d,r-d)+d*bbit.queryInterval(l-d,r-d);
         for (int d:dis) {
             if (d<=r) {
                 bit.update(d,d);
@@ -97,7 +97,7 @@ inline void solve (int u) {
 }
 signed main() {
     Cios;
-    cin>>n>>k>>r;
+    cin>>n>>l>>r;
     for (int i=2;i<=n;i++) {
         int f;
         cin>>f;
