@@ -8,7 +8,7 @@
     - Uncompleted 未完成
     - Unaccepted 未通过
     - Accepted 已通过
-    - _Example_ 示例代码，可能来自题解/同学
+    - _Example_ 示例代码，可能来自题解/同学/AI(LLM)
 - (...) 括号（可选）：可能是同一题的不同解法(in Accepted)，或是代码归属(in _Example_)等
     
 文件夹说明：
