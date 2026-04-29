@@ -15,9 +15,9 @@
 - 2026 WeekCompetition :  
     每周六打的周赛，会在题序后面标好原题题号；  
     一般都是 4 题，但是我不一定会全写
-- CodeForces :
+- CodeForces :  
     CF题库里的题，因为在洛谷交不了，单独放在这里
-- LuoguCompetition :
+- LuoguCompetition :  
     Luogu比赛，底下分比赛文件夹，是比赛编号
 
 可以随意取用，也可以帮我通过未完成的题目(qwq)
