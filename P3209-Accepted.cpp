@@ -33,7 +33,7 @@ void Tarjan (int u) {
             int v=s.top();
             s.pop();
             bel[v]=cnt;
-            if (u==v) continue;
+            if (u==v) break;
         }
     }
 }
@@ -45,6 +45,7 @@ signed main() {
         cin>>n>>m;
         for (int i=1;i<=m;i++) {
             int u,v;
+            cin>>u>>v;
             e[i]={u,v};
         }
         for (int i=1;i<=n;i++) cin>>cir[i],idx[cir[i]]=i;
@@ -54,15 +55,20 @@ signed main() {
         }
         for (int i=1;i<=m;i++) {
             int u=e[i].u,v=e[i].v;
-            if (cir[idx[u]+1]!=v&&cir[idx[v]+1]!=u) eds.push_back({u,v});
+            if (cir[idx[u]%n+1]!=v&&cir[idx[v]%n+1]!=u) eds.push_back({u,v});
         }
         for (int i=0;i<eds.size();i++) {
             for (int j=i+1;j<eds.size();j++) {
                 auto [u1,v1]=eds[i];
                 auto [u2,v2]=eds[j];
+                u1=idx[u1];
+                u2=idx[u2];
+                v1=idx[v1];
+                v2=idx[v2];
                 if (u1>v1) swap(u1,v1);
                 if (u2>v2) swap(u2,v2);
-                if ((u1<u2&&u2<v1&&v1<v2)||(u1>u2&&u2>v1&&v1>v2)) {
+                if (u1==u2||u1==v2||v1==u2||v1==v2) continue;
+                if ((u1<u2&&u2<v1&&v1<v2)||(u2<u1&&u1<v2&&v2<v1)) {
                     g[i].push_back(j+m);
                     g[j].push_back(i+m);
                     g[i+m].push_back(j);
@@ -70,14 +76,14 @@ signed main() {
                 }
             }
         }
-        for (int i=1;i<=m;i++) {
+        for (int i=0;i<2*eds.size();i++) {
             if (!dfn[i]) Tarjan(i);
         }
         bool can_be_solved=1;
-        for (int i=1;i<=m;i++) can_be_solved&=(bel[i]!=bel[i+m]);
+        for (int i=0;i<eds.size();i++) can_be_solved&=(bel[i]!=bel[i+m]);
         cout<<(can_be_solved?"YES\n":"NO\n");
         eds.clear();
-        for (int i=1;i<=m;i++) {
+        for (int i=0;i<=2*m;i++) {
             dfn[i]=low[i]=bel[i]=0;
             g[i].clear();
         }
