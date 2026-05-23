@@ -6,6 +6,8 @@
     "editor.trimAutoWhitespace": false,
     "clangd.fallbackFlags": [
         "-xc++",
-        "-std=c++20",
-    ] 
+        "-std=c++20"
+    ],
+    "task.showStatus": true,
+    "terminal.integrated.automationProfile.osx": "bash"
 }
