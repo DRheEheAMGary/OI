@@ -4,6 +4,10 @@
     "editor.guides.bracketPairs": "active",
     "editor.guides.bracketPairsHorizontal": "active",
     "editor.trimAutoWhitespace": false,
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.scrollOnMiddleClick": true,
+    "editor.cursorBlinking": "expand",
+    "editor.renderWhitespace": "all",
     "clangd.fallbackFlags": [
         "-xc++",
         "-std=c++20"
