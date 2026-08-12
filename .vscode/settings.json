@@ -8,10 +8,17 @@
     "editor.scrollOnMiddleClick": true,
     "editor.cursorBlinking": "expand",
     "editor.renderWhitespace": "all",
+    "C_Cpp.intelliSenseEngine": "disabled",
     "clangd.fallbackFlags": [
         "-xc++",
         "-std=c++20"
     ],
     "task.showStatus": true,
-    "terminal.integrated.automationProfile.osx": "bash"
+    "terminal.integrated.automationProfile.osx": "bash",
+    "clangd.arguments": [
+        "--background-index=false",
+        "--clang-tidy=false",
+        "--completion-style=detailed",
+        "--header-insertion=never"
+    ]
 }

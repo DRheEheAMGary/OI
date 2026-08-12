@@ -1,0 +1,11 @@
+CompileFlags:
+  Add:
+    - -xc++
+    - -std=c++20
+
+Diagnostics:
+  Suppress:
+    - unused-includes
+
+Index:
+  Background: Skip
