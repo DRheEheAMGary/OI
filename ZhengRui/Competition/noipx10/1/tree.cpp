@@ -33,7 +33,7 @@ struct pSegmentTree {
     int root[N];
     public:
     inline int newnode () {
-        tr[++pcnt]={-1,-1,0,0};
+        tr[++pcnt]={0,0,{0,0}};
         return pcnt;
     }
     inline int copynode (int cur) {
@@ -72,7 +72,7 @@ struct pSegmentTree {
         HAnSerH lh1=lhsum(u1,v1,lca1,fl1),rh1=rhsum(u1,v1,lca1,fl1),
                 lh2=lhsum(u2,v2,lca2,fl2),rh2=rhsum(u2,v2,lca2,fl2);
         int mid=(l+r)>>1;
-        if (l==r) return l;
+        if (l==r) return l-1;
         else if (lh1!=lh2) return BirQuery (lc(u1),lc(v1),lc(lca1),lc(fl1),lc(u2),lc(v2),lc(lca2),lc(fl2),l,mid);
         else if (rh1!=rh2) return BirQuery (rc(u1),rc(v1),rc(lca1),rc(fl1),rc(u2),rc(v2),rc(lca2),rc(fl2),mid+1,r);
         else return r;
@@ -108,8 +108,8 @@ int lca (int u,int v) {
 }
 signed main() {
     Cios;
-    freopen ("sample1.in","r",stdin);
-    freopen ("sample.out","w",stdout);
+    // freopen ("sample1.in","r",stdin);
+    // freopen ("sample.out","w",stdout);
     cin>>n;
     for (int i=1;i<n;i++) {
         int u,v;
@@ -117,7 +117,7 @@ signed main() {
         g[u].push_back(v);
         g[v].push_back(u);
     }
-    for (int i=1;i<=n;i++) cin>>c[i],ch[i]=rnd();
+    for (int i=1;i<=n;i++) cin>>c[i],ch[c[i]]=rnd();
     dfs1(1);
     dfs2(1,1);
     int q;
@@ -132,6 +132,6 @@ signed main() {
 }
 
 /*
-g++ -g tree.cpp -o tree -O2 -std=c++14 -static ; echo "finish" ; ./tree
+g++ -g tree.cpp -o tree.exe -O2 -std=c++14 -static ; echo "finish" ; ./tree
 
 */
