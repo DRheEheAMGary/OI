@@ -9,6 +9,8 @@ using namespace std;
 #define Cios ios::sync_with_stdio(0);cin.tie(0);cout.tie(0)
 signed main() {
     Cios;
+    freopen("mainf.in","r",stdin);
+    freopen("mainf.out","w",stdout);
     return 0;
 }
 

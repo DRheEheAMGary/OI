@@ -11,7 +11,3 @@ signed main() {
     Cios;
     return 0;
 }
-
-/*
-g++ -g mainf.cpp -o mainf.exe -std=c++14 -O2 -static; echo "finish"; .\mainf.exe
-*/
