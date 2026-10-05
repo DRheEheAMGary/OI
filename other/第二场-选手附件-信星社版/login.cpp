@@ -15,6 +15,50 @@ int n,q;
 struct Log {
     int t,b;
 }li[N];
+struct Query {
+    int r,id;
+};
+vector <Query> qu;
+int res[N];
+class segmentTree {
+    struct node {
+        int mx,lz;
+        inline void tag (int k) {mx+=k,lz+=k;}
+    }tr[N<<2];
+    inline int lc (int p) {return p<<1;}
+    inline int rc (int p) {return p<<1|1;}
+    inline void pushup (int p) {
+        tr[p].mx=max(tr[lc(p)].mx,tr[rc(p)].mx);
+    }
+    inline void pushdown (int p) {
+        if (tr[p].lz) {
+            tr[lc(p)].tag(tr[p].lz);
+            tr[rc(p)].tag(tr[p].lz);
+        }
+        tr[p].lz=0;
+    }
+    public:
+    inline void update (int ql,int qr,int val,int l=1,int r=n,int p=1) {
+        if (ql<=l&&r<=qr) {
+            tr[p].tag(val);
+            return;
+        }
+        int mid=(l+r)>>1;
+        pushdown(p);
+        if (ql<=mid) update(ql,qr,val,l,mid,lc(p));
+        if (qr> mid) update(ql,qr,val,mid+1,r,rc(p));
+        pushup(p);
+    }
+    inline int query (int ql,int qr,int l=1,int r=n,int p=1) {
+        if (ql<=l&&r<=qr) return tr[p].mx;
+        int mid=(l+r)>>1,res=0;
+        pushdown(p);
+        if (ql<=mid) res+=query(ql,qr,l,mid,lc(p));
+        if (qr> mid) res+=query(ql,qr,mid+1,r,rc(p));
+        return res;
+    }
+};
+int
 signed main() {
     Cios;
     freopen("login.in","r",stdin);
@@ -26,20 +70,6 @@ signed main() {
     while (q--) {
         int l,r;
         cin>>l>>r;
-        vector <bool> st(n+1,0);
-        int res=0,rres=0;
-        for (int i=l;i<=r;i++) {
-            if (li[i].t==1) {
-                if (st[li[i].b]==0) res++;
-                st[li[i].b]=1;
-            }
-            else {
-                if (st[li[i].b]==1) res--;
-                st[li[i].b]=0;
-            }
-            rres=max(res,rres);
-        }
-        cout<<rres<<"\n";
     }
     return 0;
 }
