@@ -9,9 +9,12 @@ using namespace std;
 #define Cios ios::sync_with_stdio(0);cin.tie(0);cout.tie(0)
 signed main() {
     Cios;
+    freopen("automata.in","r",stdin);
+    freopen("automata.out","w",stdout);
+    
     return 0;
 }
 
 /*
-g++ -g mainf.cpp -o mainf.exe -std=c++14 -O2 -static; echo "finish"; .\mainf.exe
+g++ -g automata.cpp -o automata.exe -std=c++14 -O2 -static; echo "finish"; .\automata.exe
 */
