@@ -18,7 +18,7 @@ struct Log {
 struct Query {
     int r,id;
 };
-vector <Query> qu;
+vector <Query> qu[N];
 int res[N];
 class segmentTree {
     struct node {
@@ -58,7 +58,7 @@ class segmentTree {
         return res;
     }
 };
-int
+int lst[N],nxt[N];
 signed main() {
     Cios;
     freopen("login.in","r",stdin);
@@ -67,10 +67,18 @@ signed main() {
     for (int i=1;i<=n;i++) {
         cin>>li[i].t>>li[i].b;
     }
-    while (q--) {
+    for (int i=n;i>=1;i++) {
+        int b=li[i].b;
+        if (lst[b]) nxt[i]=lst[b];
+        else nxt[i]=n+1;
+        lst[b]=i;
+    }
+    for (int i=1;i<=q;i++) {
         int l,r;
         cin>>l>>r;
+        qu[l].push_back({r,i});
     }
+    
     return 0;
 }
 
