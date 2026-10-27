@@ -1,1 +1,8 @@
 .vscode/tasks.json
+
+*.exe
+
+*.out
+*.in
+
+.DS_Store

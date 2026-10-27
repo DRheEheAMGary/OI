@@ -5,7 +5,7 @@ love hanser forever!---
 #include<bits/stdc++.h>
 using namespace std;
 #define intc constexpr int
-#define intl long long
+typedef long long intl;
 #define Cios ios::sync_with_stdio(0);cin.tie(0);cout.tie(0)
 signed main() {
     Cios;
@@ -15,5 +15,6 @@ signed main() {
 }
 
 /*
-g++ -g mainf.cpp -o mainf.exe -std=c++14 -O2 -static; echo "finish"; .\mainf.exe
+g++ -g mainf.cpp -o mainf.exe -std=c++14 -O2 -static; echo "finish"; .\mainf.exe; rm mainf.exe
+cd $work && g++ mainf.cpp -o mainf -std=c++14 -O2 && echo "finish" && ./mainf && rm mainf
 */
