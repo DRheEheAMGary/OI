@@ -9,11 +9,11 @@ typedef long long intl;
 #define Cios ios::sync_with_stdio(0);cin.tie(0);cout.tie(0)
 int n,m;
 vector <vector<int>> pr,h0;
-vector <int> up;
+vector <int> up,dw;
 signed main() {
     Cios;
-    freopen("utopia.in","r",stdin);
-    freopen("utopia.out","w",stdout);
+    // freopen("utopia.in","r",stdin);
+    // freopen("utopia.out","w",stdout);
     cin>>n>>m;
     int all=0;
     pr.resize(n+1);
@@ -29,19 +29,27 @@ signed main() {
     }
     if (all%n!=0) return cout<<"-1\n",0;
     int goal=all/n;
-    int res=0;
+    intl res=0;
+    dw.resize(n+1);
     for (int i=1;i<=n;i++) {
         if (pr[i].size()>goal) up.push_back(i),res+=pr[i].size()-goal;
+        if (pr[i].size()<goal) dw[i]=goal-pr[i].size();
     }
     cout<<res<<"\n";
     for (auto item:up) {
-        int dta=pr[item].size()-goal;
+        intl dta=pr[item].size()-goal;
         for (auto tr:pr[item]) {
             if (!dta) break;
             if (h0[tr].empty()) continue;
-            cout<<item<<" "<<h0[tr].back()<<" "<<tr<<"\n";
+            int meti=h0[tr].back();
             h0[tr].pop_back();
+            while (!dw[meti]) {
+                meti=h0[tr].back();
+                h0[tr].pop_back();
+            }
+            cout<<item<<" "<<meti<<" "<<tr<<"\n";
             dta--;
+            dw[meti]--;
         }
     }
     return 0;

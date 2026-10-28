@@ -30,7 +30,6 @@ signed main() {
             res=min({res,n-k,m});
             cout<<sum[res+k]-sum[res]<<"\n";
         }
-    
     }
     return 0;
 }

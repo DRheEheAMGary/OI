@@ -15,6 +15,6 @@ signed main() {
 }
 
 /*
-g++ -g mainf.cpp -o mainf.exe -std=c++14 -O2 -static; echo "finish"; .\mainf.exe
-cd $work/ZhengRui/Competition/noip20/6/ && g++ mainf.cpp -o mainf -std=c++14 -O2 && echo "finish" && ./mainf
+g++ -g mainf.cpp -o mainf.exe -std=c++14 -O2 -static; echo "finish"; .\mainf.exe; rm mainf.exe
+cd $work && g++ mainf.cpp -o mainf -std=c++14 -O2 && echo "finish" && ./mainf && rm mainf
 */
