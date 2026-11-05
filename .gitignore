@@ -4,5 +4,8 @@
 
 *.out
 *.in
+*.ans
+
+*.pdf
 
 .DS_Store
